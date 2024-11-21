@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> result(n, 1);
+        vector<int>temp = nums ;
+        for( int i = 1 ; i < n ; i++ ){
+            temp[i] = temp[i-1] * nums[i] ;
+         }
+         cout<<temp[1]<<endl;
+         result[ n - 1 ] = temp[ n-2 ] ;
+         int initial = 1  ;
+         for( int i = n - 2  ; i >= 1 ; i-- ){
+            initial = initial * nums[ i + 1 ] ;
+            result[ i ] = initial * temp[ i - 1];
+         }
+        //  cout<<initial ;
+         if( n>0 ){
+            result[ 0 ]  = initial * nums[1] ;
+         }
+        return result;
+    }
+};
