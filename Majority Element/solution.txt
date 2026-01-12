@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int, int> m;
+        int lim = nums.size() / 2;
+        for (int a : nums) {
+            m[a]++;
+        }
+        for (auto const& [key, val] : m) {
+            if (val > lim) {
+                return key;
+            }
+        }
+        return 0;
+    }
+};
