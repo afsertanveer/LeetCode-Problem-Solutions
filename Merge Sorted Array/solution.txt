@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void merge(vector<int>& p, int m, vector<int>& q, int n) {
+     vector<int> v; 
+     int i = 0 ; 
+     int j = 0 ;
+     while(i<m && j<n){
+        if(p[i]<q[j]){
+            v.push_back(p[i]);
+            i++;
+        }else{
+            v.push_back(q[j]);
+            j++;
+        }
+     }  
+     while(i<m){
+        v.push_back(p[i++]);
+     } 
+     while(j<n){
+        v.push_back(q[j++]);
+     } 
+     p.clear();
+     for(int a : v){
+        p.push_back(a);
+     }
+    }
+};
